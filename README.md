@@ -1,1 +1,1 @@
-Rebasage des commit sur main
+Ajout des paramtères de victoire/défaite
