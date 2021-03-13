@@ -9,8 +9,6 @@ for (let i = 0; i < 9; i++) {
      container.appendChild(cases);
     }
 
-
-
 let joueur1="";
 let joueur2="";
 let t=0;
@@ -22,8 +20,6 @@ do {
 do {
     joueur2 =prompt("Nom du joueur 2 ?")
 } while (!isNaN(joueur2));
-
-
 
    
 let colorJ1= prompt(`${joueur1} Quelle couleur voulez-avoir (en anglais) ? `);
@@ -52,6 +48,35 @@ info.appendChild(paraTour);
 let box = document.querySelectorAll(".cas");
 
 
+function regle(){
+    if (box[0].style.backgroundColor == colorJ1 && box[1].style.backgroundColor == colorJ1 && box[2].style.backgroundColor == colorJ1
+    || box[3].style.backgroundColor == colorJ1 && box[4].style.backgroundColor == colorJ1 && box[5].style.backgroundColor == colorJ1
+    || box[6].style.backgroundColor == colorJ1 && box[7].style.backgroundColor == colorJ1 && box[8].style.backgroundColor == colorJ1
+    || box[0].style.backgroundColor == colorJ1 && box[3].style.backgroundColor == colorJ1 && box[6].style.backgroundColor == colorJ1
+    || box[1].style.backgroundColor == colorJ1 && box[4].style.backgroundColor == colorJ1 && box[7].style.backgroundColor == colorJ1
+    || box[2].style.backgroundColor == colorJ1 && box[5].style.backgroundColor == colorJ1 && box[8].style.backgroundColor == colorJ1
+    || box[0].style.backgroundColor == colorJ1 && box[4].style.backgroundColor == colorJ1 && box[8].style.backgroundColor == colorJ1
+    || box[2].style.backgroundColor == colorJ1 && box[4].style.backgroundColor == colorJ1 && box[6].style.backgroundColor == colorJ1){
+        console.log(`${joueur1} gagne la partie !`);
+        
+    }
+
+    else if (box[0].style.backgroundColor == colorJ2 && box[1].style.backgroundColor == colorJ2 && box[2].style.backgroundColor == colorJ2
+        || box[3].style.backgroundColor == colorJ2 && box[4].style.backgroundColor == colorJ2 && box[5].style.backgroundColor == colorJ2
+        || box[6].style.backgroundColor == colorJ2 && box[7].style.backgroundColor == colorJ2 && box[8].style.backgroundColor == colorJ2
+        || box[0].style.backgroundColor == colorJ2 && box[3].style.backgroundColor == colorJ2 && box[6].style.backgroundColor == colorJ2
+        || box[1].style.backgroundColor == colorJ2 && box[4].style.backgroundColor == colorJ2 && box[7].style.backgroundColor == colorJ2
+        || box[2].style.backgroundColor == colorJ2 && box[5].style.backgroundColor == colorJ2 && box[8].style.backgroundColor == colorJ2
+        || box[0].style.backgroundColor == colorJ2 && box[4].style.backgroundColor == colorJ2 && box[8].style.backgroundColor == colorJ2
+        || box[2].style.backgroundColor == colorJ2 && box[4].style.backgroundColor == colorJ2 && box[6].style.backgroundColor == colorJ2){
+            console.log(`${joueur2} gagne la partie !`);
+            
+        }
+    
+
+
+    }
+
 
 function play(){
 
@@ -61,7 +86,9 @@ function play(){
     paraTour.textContent="Tour n ° : " + t;
     t++; 
     }
+    + regle();
 }
+
 box.forEach(e=>(e.addEventListener("click", play)))
 
 

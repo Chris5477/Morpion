@@ -1,1 +1,1 @@
-Ajout du traitement cas par cas de la grille de morpion 
+Ajout des paramtères de victoire/défaite
