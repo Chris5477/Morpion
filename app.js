@@ -46,6 +46,31 @@ info.appendChild(paraJ2);
 info.appendChild(paraTour);
 
 let box = document.querySelectorAll(".cas");
+let colorConfetti = ["blue", "red", "yellow", "green", "pink", "lime", "orange"];
+
+const party = document.createElement('div');
+document.body.appendChild(party);
+
+function Makeconfetti(){ 
+    let ValueConfetti = Math.round(Math.random()*6);
+    let posConfetti = Math.round(Math.random()*98);
+    let confetti = document.createElement("p");
+    confetti.className="fete";
+    confetti.textContent=".";
+    confetti.style.left=posConfetti +"%";
+    confetti.style.color=colorConfetti[ValueConfetti];
+    party.appendChild(confetti);
+     
+}
+
+const stopGame = document.createElement("button")
+stopGame.textContent="Quitter";
+stopGame.classList.add("exit");
+
+
+const winner = document.createElement('p');
+winner.className="win";
+party.appendChild(winner);
 
 
 function regle(){
@@ -57,7 +82,10 @@ function regle(){
     || box[2].style.backgroundColor == colorJ1 && box[5].style.backgroundColor == colorJ1 && box[8].style.backgroundColor == colorJ1
     || box[0].style.backgroundColor == colorJ1 && box[4].style.backgroundColor == colorJ1 && box[8].style.backgroundColor == colorJ1
     || box[2].style.backgroundColor == colorJ1 && box[4].style.backgroundColor == colorJ1 && box[6].style.backgroundColor == colorJ1){
-        console.log(`${joueur1} gagne la partie !`);
+        party.classList.add("victory");
+        winner.textContent=`${joueur1} vous êtes le vainqueur !!! `;
+       setInterval(Makeconfetti, 10);
+       party.appendChild(stopGame);
         
     }
 
@@ -69,11 +97,12 @@ function regle(){
         || box[2].style.backgroundColor == colorJ2 && box[5].style.backgroundColor == colorJ2 && box[8].style.backgroundColor == colorJ2
         || box[0].style.backgroundColor == colorJ2 && box[4].style.backgroundColor == colorJ2 && box[8].style.backgroundColor == colorJ2
         || box[2].style.backgroundColor == colorJ2 && box[4].style.backgroundColor == colorJ2 && box[6].style.backgroundColor == colorJ2){
-            console.log(`${joueur2} gagne la partie !`);
+            party.classList.add("victory");
+            winner.textContent=`${joueur2} Vous êtes le vainqueur !!!`;
+            setInterval(Makeconfetti, 10);
+            party.appendChild(stopGame);
             
         }
-    
-
 
     }
 
@@ -91,4 +120,8 @@ function play(){
 
 box.forEach(e=>(e.addEventListener("click", play)))
 
+
+
+stopGame.addEventListener("click" , () => {
+    window.close("index.html")})
 

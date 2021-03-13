@@ -45,3 +45,57 @@ p{
     padding: 15px 10px;
     
 }
+
+
+.victory{
+    width: 80%;
+    height: 80vh;
+    margin: auto;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.658);
+   
+    
+}
+
+.fete{
+    font-size: 70px;
+    display: inline;
+    animation-name: fall;
+    animation-duration: 5s;
+    position: absolute;
+    z-index: 1;
+}
+
+.win{
+    color: white;
+    border-bottom: 1px ridge white;
+    font-size: 35px;
+    font-style: italic;
+    font-weight: bolder;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+@keyframes fall {
+    from{ transform: translateY(-15vh);}
+    to{
+        transform: translateY(65vh);}
+    
+}
+
+.exit{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    padding: 20px;
+    z-index: 1000;
+}
+
+
+
+
+
