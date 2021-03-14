@@ -1,17 +1,5 @@
-const container = document.createElement("div");
-container.id="container";
-document.body.appendChild(container);
-
-
-for (let i = 0; i < 9; i++) {
-     let cases = document.createElement("div")
-     cases.className="cas";
-     container.appendChild(cases);
-    }
-
-let joueur1="";
+let joueur1="";                                                                         //Demande d'information prenom/couleur
 let joueur2="";
-let t=0;
 
 do {
     joueur1 =prompt("Nom du joueur 1 ?")
@@ -26,6 +14,20 @@ let colorJ1= prompt(`${joueur1} Quelle couleur voulez-avoir (en anglais) ? `);
 let colorJ2= prompt(`${joueur2} Quelle couleur voulez-avoir (en anglais) ? `);
 
 
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+const container = document.createElement("div");                                    // Création des éléments HTML
+container.id="container";
+document.body.appendChild(container);
+
+
+for (let i = 0; i < 9; i++) {
+     let cases = document.createElement("div")
+     cases.className="cas";
+     container.appendChild(cases);
+    }
+    
 const info = document.createElement("section");
 document.body.insertBefore(info, container);
 
@@ -43,35 +45,12 @@ paraTour.style.color="#FFF";
 
 info.appendChild(paraJ1);
 info.appendChild(paraJ2);
-info.appendChild(paraTour);
-
-let box = document.querySelectorAll(".cas");
-let colorConfetti = ["blue", "red", "yellow", "green", "pink", "lime", "orange"];
-
-const party = document.createElement('div');
-document.body.appendChild(party);
-
-function Makeconfetti(){ 
-    let ValueConfetti = Math.round(Math.random()*6);
-    let posConfetti = Math.round(Math.random()*98);
-    let confetti = document.createElement("p");
-    confetti.className="fete";
-    confetti.textContent=".";
-    confetti.style.left=posConfetti +"%";
-    confetti.style.color=colorConfetti[ValueConfetti];
-    party.appendChild(confetti);
-     
-}
-
-const stopGame = document.createElement("button")
-stopGame.textContent="Quitter";
-stopGame.classList.add("exit");
+info.appendChild(paraTour);    
 
 
-const winner = document.createElement('p');
-winner.className="win";
-party.appendChild(winner);
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+let box = document.querySelectorAll(".cas");                                                             // Paramètrage du morpion
 
 function regle(){
     if (box[0].style.backgroundColor == colorJ1 && box[1].style.backgroundColor == colorJ1 && box[2].style.backgroundColor == colorJ1
@@ -103,9 +82,10 @@ function regle(){
             party.appendChild(stopGame);
             
         }
-
+        
     }
-
+    
+    let t=0;
 
 function play(){
 
@@ -121,7 +101,41 @@ function play(){
 box.forEach(e=>(e.addEventListener("click", play)))
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+let colorConfetti = ["blue", "red", "yellow", "green", "pink", "lime", "orange"];                           // Feature animation victoire
+
+const party = document.createElement('div');
+document.body.appendChild(party);
+
+function Makeconfetti(){ 
+    let ValueConfetti = Math.round(Math.random()*6);
+    let posConfetti = Math.round(Math.random()*98);
+    let confetti = document.createElement("p");
+    confetti.className="fete";
+    confetti.textContent=".";
+    confetti.style.left=posConfetti +"%";
+    confetti.style.color=colorConfetti[ValueConfetti];
+    party.appendChild(confetti);
+     
+}
+const winner = document.createElement('p');
+winner.className="win";
+party.appendChild(winner);
+
+
+const stopGame = document.createElement("button")
+stopGame.textContent="Quitter";
+stopGame.classList.add("exit");
 
 stopGame.addEventListener("click" , () => {
     window.close("index.html")})
+
+
+
+
+
+
+
 
