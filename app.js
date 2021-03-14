@@ -130,11 +130,19 @@ stopGame.textContent="Quitter";
 stopGame.classList.add("exit");
 
 stopGame.addEventListener("click" , () => {
-    window.close("index.html")})
+    window.close("index.html")});
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+const darkMode = document.createElement("button");
+darkMode.textContent="Mode dark/light";
+info.appendChild(darkMode);
 
 
-
-
+darkMode.addEventListener("click", () => {
+    document.body.classList.toggle("darkMode");
+    box.forEach(el =>(el.classList.toggle("darkMode")));
+});
 
 
 
